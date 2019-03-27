@@ -104,26 +104,29 @@
         "description": "Type of Reverse Proxy to secure SonarQube"
       }
     },
-    "sqVM_LTS_Version": {
+    "sqVM_EE_Version": {
       "type": "string",
-      "defaultValue": "sonarqube-7.5",
+      "defaultValue": "sonarqube-7.7",
       "allowedValues": [
-        "sonarqube-7.5",
-        "sonarqube-7.4",
-        "sonarqube-7.3",
-        "sonarqube-7.2",
-        "sonarqube-7.1",
-        "sonarqube-7.0",  
-        "sonarqube-6.7.4",      
-        "sonarqube-5.6.4"
+        "sonarqube-7.7"
       ],
       "metadata": {
-        "description": "Version of SonarQube to install"
+        "description": "Name of the SonarQube inner folder to install"
+      }
+    },
+    "sqVM_EE_Download_Name": {
+      "type": "string",
+      "defaultValue": "sonarqube-enterprise-7.7",
+      "allowedValues": [
+        "sonarqube-enterprise-7.7"
+      ],
+      "metadata": {
+        "description": "Version of SonarQube to download"
       }
     },
     "sonarQubeDownloadRoot": {
       "type": "string",
-      "defaultValue": "https://binaries.sonarsource.com/Distribution/sonarqube/",
+      "defaultValue": "https://binaries.sonarsource.com/CommercialDistribution/sonarqube-enterprise/",
       "metadata": {
         "description": "Location to download the installation binary of SonarQube from"
       }
@@ -151,7 +154,7 @@
     "SQvmAppImagePublisher": "MicrosoftWindowsServer",
     "SQvmAppImageOffer": "WindowsServer",
     "SQvmAppWindowsOSVersion": "2012-R2-Datacenter",
-    "SQvmAppVmSize": "Standard_DS1_v2",
+    "SQvmAppVmSize": "Standard_D2s_v3",
     "SQvmAppSubnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'SQvnet', variables('SQvnetExternalSubnetName'))]",
     "SQvmAppNicName": "[concat(parameters('sqVM_AppName'), 'NetworkInterface')]",
     "SQpublicIPName": "SQpublicIP",
@@ -319,8 +322,9 @@
                 "connectionUsername": "[parameters('sqDB_Admin_UserName')]",
                 "connectionPassword": "[parameters('sqDB_Admin_Password')]",
                 "sqVmAdminPwd": "[parameters('sqVM_AppAdmin_Password')]",
-                "sqLtsVersion": "[parameters('sqVM_LTS_Version')]",                
-	              "sonarQubeDownloadRoot": "[parameters('sonarQubeDownloadRoot')]"
+                "sqLtsVersion": "[parameters('sqVM_EE_Version')]",                
+                "sonarQubeDownloadRoot": "[parameters('sonarQubeDownloadRoot')]",
+                "sonarQubeDownloadName": "[parameters('sqVM_EE_Download_Name')]"
               }
             },
             "protectedSettings": {}
