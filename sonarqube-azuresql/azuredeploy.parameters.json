@@ -1,30 +1,30 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2018-06-01/deploymentParameters.json#",
   "contentVersion": "1.1.0.0",
   "parameters": {
     "sqVM_AppName": {
-      "value": "sonarqubevm"
+      "value": "sonarqubevm1"
     },
     "sqVM_AppAdmin_UserName": {
-      "value": "vmAdmin"
+      "value": "sonar-admin"
     },
     "sqVM_AppAdmin_Password": {
-      "value": "GEN-PASSWORD"
+      "value": "pws@1234"
     },
     "sq_PublicIP_DnsPrefix": {
-      "value": "GEN-UNIQUE-32"
+      "value": "sonardev"
     },
     "sqDB_Admin_UserName": {
-      "value": "sqlAdmin"
+      "value": "sonarsql-admin"
     },
     "sqDB_Admin_Password": {
-      "value": "GEN-PASSWORD"
+      "value": "pws@1234"
     },
     "sqDB_ServerName": {
-      "value": "GEN-UNIQUE-10"
+      "value": "sqdbserver"
     },
     "sqDB_DBName": {
-      "value": "sonar"
+      "value": "sonarqube"
     },
     "sqDB_DBEdition": {
       "value": "Basic"
@@ -38,8 +38,14 @@
      "sqVM_ReverseProxy_Type": {
       "value": "IIS"
     },
-    "sqVM_LTS_Version": {
-      "value": "sonarqube-5.6.4"
+    "sqVM_EE_Download_Name": {
+      "value": "sonarqube-enterprise-7.7"
+    },
+    "sqVM_EE_Version": {
+      "value": "sonarqube-7.7"
+    },
+    "_artifactsLocation": {
+      "value": "https://raw.githubusercontent.com/capcndt/sonarqube-azuresql/master/"
     }
   }
 }
